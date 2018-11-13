@@ -1,0 +1,14 @@
+/**
+ * all global project vars in framework/foundation/settings !!
+ */
+
+// self written mixins
+//@import "";
+
+// import project wide stuff
+// "FRAMEWORK"
+@import "framework/base";
+
+// import styles for project
+// "PROJECT RELEVANT CSS"
+@import "project/base";
