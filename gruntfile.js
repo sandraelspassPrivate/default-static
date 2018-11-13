@@ -172,6 +172,72 @@ module.exports = function(grunt) {
             }
         },
 
+        // https://github.com/gruntjs/grunt-contrib-clean
+        clean: {
+            // cleans formerly created svg files, sprite & demo
+            svg: {
+                options: {
+                    // force: true,
+                    // 'no-write': true
+                },
+                // BE CAREFUL WHAT TO CLEAN!!!
+                // TEST PATH CHANGES CAREFULLY WITH NO-WRITE OPTION
+                src: [ 'dist/img/svg/*' ]
+            }
+        },
+
+        // svgmin - minifies svg files
+        // https://github.com/sindresorhus/grunt-svgmin
+        svgmin: {
+            dist: {
+                files: [ {
+                    expand: true,
+                    cwd: 'src/img/svg/input',
+                    src: [ '*.svg' ],
+                    dest: 'dist/img/svg/output'
+                } ]
+            },
+            options: {
+                plugins: [
+                    { removeViewBox: false },               // don't remove the viewbox atribute from the SVG
+                    { removeUselessStrokeAndFill: false },  // don't remove Useless Strokes and Fills
+                    { removeEmptyAttrs: false }             // don't remove Empty Attributes from the SVG
+                ]
+            }
+        },
+
+
+        // svgstore - transforms svg and makes one sprite
+        // https://github.com/FWeinb/grunt-svgstore
+        svgstore: {
+            dist: {
+                files: {
+                    'dist/img/svg/svg-sprite.svg': [ 'dist/img/svg/output/*.svg' ]
+                }
+            },
+            options: {
+                prefix: 'icon-',
+                cleanup: true,
+                // @see https://github.com/beautify-web/js-beautify
+                // do not format for prod, so it will get minified
+                formatting: {
+                    indent_size: 2
+                },
+                // include a demo HTML (named like destName + -demo.html) from where you can copy your <use> blocks
+                includedemo: true,
+                svg: {
+                    // set attributes for the resulting svg file here
+                    class: 'not-rendered',
+                    // must be included for advanced svg features like filters
+                    'xmlns': "http://www.w3.org/2000/svg",
+                    'xmlns:xlink': "http://www.w3.org/1999/xlink"
+                },
+                symbol: {
+                    // set attributes for the resulting symbols file here
+                }
+            }
+        },
+
         // https://github.com/gruntjs/grunt-contrib-copy/
         // ** use grunt copy to copy the files manual ***
         copy: {
@@ -182,7 +248,13 @@ module.exports = function(grunt) {
                     src: ['**'],
                     dest: 'dist/fonts'
                 }]
-            }
+            },
+            images: [{
+                expand: true,
+                cwd: 'src/img/assets',
+                src: ['**'],
+                dest: 'dist/img/assets'
+            }]
         },
 
         // https://github.com/gruntjs/grunt-contrib-watch
@@ -221,12 +293,15 @@ module.exports = function(grunt) {
 
     // where we tell grunt what to do when we type "grunt" into the terminal
     grunt.registerTask('default', [ 'watch' ]);
+    grunt.registerTask('svg', [ 'clean:svg', 'svgmin', 'svgstore' ]);
+
 
     // compile js-lib manually when changed!
     grunt.registerTask('js-lib', [ 'concat:lib', 'babel', 'uglify:lib' ]);
     grunt.registerTask('js-custom', [ 'eslint', 'concat:custom', 'uglify:custom' ]);
     grunt.registerTask('css', [ 'stylelint', 'sass', 'postcss' ]);
     grunt.registerTask('copy-files', [ 'copy:fonts' ]);
-    grunt.registerTask('build', [ 'css', 'js-lib', 'js-custom', 'copy-files' ]);
+    grunt.registerTask('build', [ 'svg', 'css', 'js-lib', 'js-custom' ]);
+
 
 };
