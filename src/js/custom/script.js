@@ -14,13 +14,11 @@
      * https://css-tricks.com/ajaxing-svg-sprite/
      */
     $.get(JSConf.svgPath, function(data) {
-        console.log('test JSConf');
         var div = document.createElement("div");
         div.className = 'svg-sprite';
         div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
         document.body.insertBefore(div, document.body.childNodes[ 0 ]);
     });
-
 
 
     /**
@@ -33,8 +31,7 @@
         $html
             .removeClass('no-js')
             .addClass('js');
-
-
+        
         /**
          * initialize foundation
          */

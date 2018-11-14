@@ -78,7 +78,8 @@ module.exports = function(grunt) {
                     // LIBRARY SCRIPTS
 
                     // jQuery
-                    'src/js/lib/jquery-3.3.1.js',
+                    //'src/js/lib/jquery-3.3.1.js',
+                    'src/js/lib/jquery.js',
 
                     // foundation 6
                     // core MUST BE first one to include!
@@ -114,7 +115,7 @@ module.exports = function(grunt) {
                     'src/js/lib/foundation/foundation.util.triggers.js',
 
                     // cookiebar
-                    'src/js/lib/jquery.cookieBar.js',
+                    'src/js/lib/jquery.cookieBar.js'
                 ],
                 dest: 'dist/js/lib.es2015.js'
             },
