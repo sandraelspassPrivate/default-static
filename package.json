@@ -11,7 +11,9 @@
     "build": "grunt build",
     "watch": "grunt"
   },
-  "dependencies": {},
+  "dependencies": {
+    "npm": "^6.4.1"
+  },
   "devDependencies": {
     "autoprefixer": "^7.2.3",
     "babel-core": "^6.26.0",
@@ -30,6 +32,8 @@
     "grunt-postcss": "^0.9.0",
     "grunt-sass": "^2.0.0",
     "grunt-stylelint": "^0.9.0",
+    "grunt-svgmin": "^5.0.0",
+    "grunt-svgstore": "^1.0.0",
     "grunt-timer": "^0.6.0",
     "load-grunt-tasks": "^3.5.2",
     "node-sass": "^4.7.2",

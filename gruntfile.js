@@ -71,7 +71,6 @@ module.exports = function(grunt) {
         },
 
 
-
         // https://github.com/gruntjs/grunt-contrib-concat
         concat: {
             lib: {
@@ -115,17 +114,27 @@ module.exports = function(grunt) {
                     'src/js/lib/foundation/foundation.util.triggers.js',
 
                     // cookiebar
-                    'src/js/lib/jquery.cookieBar.js'
+                    'src/js/lib/jquery.cookieBar.js',
                 ],
                 dest: 'dist/js/lib.es2015.js'
             },
             custom: {
                 src: [
+                    // footable (babel kills it!)
+                    // http://fooplugins.github.io/FooTable/docs/getting-started.html
+                    'src/js/lib/jquery/footable.js',
 
                     // CUSTOM SCRIPTS
                     'src/js/custom/**/*.js'
                 ],
                 dest: 'dist/js/custom.js'
+            },
+            conf: {
+                src: [
+                    // CONF SCRIPT
+                    'src/js/jsconf.js'
+                ],
+                dest: 'dist/js/jsconf.js'
             }
         },
 
@@ -238,31 +247,28 @@ module.exports = function(grunt) {
             }
         },
 
-        // https://github.com/gruntjs/grunt-contrib-copy/
-        // ** use grunt copy to copy the files manual ***
-        copy: {
-            fonts: {
-                files: [{
-                    expand: true,
-                    cwd: 'src/fonts',
-                    src: ['**'],
-                    dest: 'dist/fonts'
-                }]
-            },
-            images: [{
-                expand: true,
-                cwd: 'src/img/assets',
-                src: ['**'],
-                dest: 'dist/img/assets'
-            }]
-        },
-
         // https://github.com/gruntjs/grunt-contrib-watch
         watch: {
             // watches itself for changes
             // for grunt dev only
             // grunt: { files: [ 'Gruntfile.js' ] },
 
+            // live reload feature of watch task
+            // include script before closing body tag:  <script src="http://localhost:35729/livereload.js"></script>
+            options: {
+                livereload: true,
+                livereloadOnError: false
+            },
+
+
+            // svg handling
+            svg: {
+                files: 'src/img/svg/input/*.svg',
+                tasks: [ 'clean:svg', 'svgmin', 'svgstore' ],
+                options: {
+                    spawn: false
+                }
+            },
 
             // watches script folder
             scripts: {
@@ -281,7 +287,28 @@ module.exports = function(grunt) {
                     spawn: false
                 }
             }
+        },
 
+
+        // https://github.com/gruntjs/grunt-contrib-copy/
+        // ** use grunt copy to copy the files manual ***
+        copy: {
+            fonts: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/fonts',
+                    src: ['**'],
+                    dest: 'dist/fonts'
+                }]
+            },
+            images: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/img/fonts',
+                    src: ['**'],
+                    dest: 'dist/img/fonts'
+                }]
+            }
         }
     });
 
@@ -291,17 +318,18 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-postcss');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
+
     // where we tell grunt what to do when we type "grunt" into the terminal
     grunt.registerTask('default', [ 'watch' ]);
     grunt.registerTask('svg', [ 'clean:svg', 'svgmin', 'svgstore' ]);
 
-
     // compile js-lib manually when changed!
+    grunt.registerTask('js-conf', [ 'concat:conf' ]);
     grunt.registerTask('js-lib', [ 'concat:lib', 'babel', 'uglify:lib' ]);
     grunt.registerTask('js-custom', [ 'eslint', 'concat:custom', 'uglify:custom' ]);
+    grunt.registerTask('copy-files', [ 'copy:fonts', 'copy:images']);
     grunt.registerTask('css', [ 'stylelint', 'sass', 'postcss' ]);
-    grunt.registerTask('copy-files', [ 'copy:fonts' ]);
-    grunt.registerTask('build', [ 'svg', 'css', 'js-lib', 'js-custom' ]);
+    grunt.registerTask('build', [ 'svg', 'css', 'js-conf', 'js-lib', 'js-custom', 'copy-files' ]);
 
-
+    // grunt.registerTask('deployFSK', [ 'build', 'copy:deploy' ]);
 };

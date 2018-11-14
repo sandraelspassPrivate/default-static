@@ -4,8 +4,12 @@
 
       <div class="logo">
           <a href="/" title="Zurück zur Startseite">
-              <svg class="icon">
+              <svg>
                   <use xlink:href="#icon-logo"></use>
+              </svg>
+              <br>
+              <svg>
+                  <use xlink:href="#icon-esel"></use>
               </svg>
           </a>
       </div>

@@ -9,12 +9,12 @@
     // var $body = $('body');
     var $htmlBody = $('html, body');
 
-
     /**
      * inject svg sprite after body - its chacheable!
      * https://css-tricks.com/ajaxing-svg-sprite/
      */
     $.get(JSConf.svgPath, function(data) {
+        console.log('test JSConf');
         var div = document.createElement("div");
         div.className = 'svg-sprite';
         div.innerHTML = new XMLSerializer().serializeToString(data.documentElement);
