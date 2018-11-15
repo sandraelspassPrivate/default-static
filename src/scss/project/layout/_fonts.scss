@@ -14,6 +14,22 @@
     url('../../dist/fonts/slabo/slabo-27px-v4-latin-regular.svg#Slabo27px') format('svg');
 }
 
+/* patua-one-regular - latin */
+@font-face {
+  font-family: 'Patua One';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../../dist/fonts/patua/patua-one-v8-latin-regular.eot');
+  src:
+    local('Patua One'),
+    local('PatuaOne-Regular'),
+    url('../../dist/fonts/patua/patua-one-v8-latin-regular.eot?#iefix') format('embedded-opentype'),
+    url('../../dist/fonts/patua/patua-one-v8-latin-regular.woff2') format('woff2'),
+    url('../../dist/fonts/patua/patua-one-v8-latin-regular.woff') format('woff'),
+    url('../../dist/fonts/patua/patua-one-v8-latin-regular.ttf') format('truetype'),
+    url('../../dist/fonts/patua/patua-one-v8-latin-regular.svg#PatuaOne') format('svg');
+}
+
 /* open-sans-300 - latin */
 @font-face {
   font-family: 'Open Sans';

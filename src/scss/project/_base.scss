@@ -5,9 +5,12 @@
 @import "layout/fonts";
 @import "layout/main";
 @import "layout/header";
+@import "layout/nav";
 
 // Only CSS for smalles element/atom
 @import "atoms/buttons";
+@import "atoms/typo";
 
 // CSS for modules / molecules
 @import "modules/table";
+@import "modules/stage";

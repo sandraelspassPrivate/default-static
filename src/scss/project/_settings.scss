@@ -1,1 +1,23 @@
 // hier werden alle Vairablen von Foundation überschrieben
+// 1. Global
+// ---------
+
+$green-light: #f1ffe3; //#2199e8;
+$green: #99cc99;
+$green-dark: #54996d;
+$greenn-shini: #b2cc65;
+
+$primary-color: $green; //#2199e8;
+$secondary-color: $green-light;
+$success-color: $greenn-shini;
+$warning-color: #ffae00;
+$alert-color: #ec5840;
+
+$light-gray: #e6e6e6;
+$medium-gray: #cacaca;
+$dark-gray: #8a8a8a;
+$black: #3d434c;
+$white: #fefefe;
+
+// Fonts
+$patua-font: "Patua One", Times, serif;

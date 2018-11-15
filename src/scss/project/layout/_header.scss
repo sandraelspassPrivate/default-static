@@ -1,1 +1,60 @@
 // CSS for Header
+.header {
+  &--background {
+    background: $white;
+    border-top: 2px solid $primary-color;
+    box-shadow: 0 0 5px 5px rgba(0, 0, 0, .3);
+  }
+
+  .title-bar {
+    width: 100%;
+    z-index: 10;
+    transition: $defaultTransition;
+    height: rem-calc(102);
+    background: $white;
+    padding: 0;
+
+    &.shrink {
+      .title-bar-right,
+      .title-bar-left {
+        padding-top: 0;
+        padding-bottom: 0;
+      }
+
+      .title-bar-left {
+        .logo {
+          .svg {
+            width: rem-calc(105);
+            height: rem-calc(50);
+          }
+        }
+      }
+
+      .title-bar-right {
+        padding-top: rem-calc(10);
+      }
+    }
+
+    .title-bar-right,
+    .title-bar-left {
+      transition: $defaultTransition;
+      padding-top: 1.4em;
+      padding-bottom: 1.4em;
+    }
+
+    .title-bar-left {
+      .logo {
+        .svg {
+          transition: $defaultTransition;
+          width: rem-calc(170);
+          height: rem-calc(50);
+          fill: $primary-color;
+        }
+      }
+    }
+
+    .title-bar-right {
+      padding-top: rem-calc(33);
+    }
+  }
+}

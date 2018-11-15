@@ -1,3 +1,23 @@
-p {
-  font-family: $second-font-family;
-}
+// Allgemeine CSS Angaben
+$global-width-medium: rem-calc(1024);
+$global-width-small: rem-calc(670);
+
+.container {
+  width: $global-width;
+  margin: 0 auto;
+
+  @include breakpoint(large down) {
+    width: $global-width-medium;
+  }
+
+  @include breakpoint(medium down) {
+    width: $global-width-small;
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    clear: both;
+    display: table;
+  }
+} // container

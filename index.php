@@ -15,21 +15,10 @@ setConfigIfEmpty("bodyID","door");
 
 <?php renderPartial('_html-open'); ?>
 <?php renderPartial('header'); ?>
+<div class="stage" style="background-image: url('dist/img/dummys/fotolia_211605085.jpg');">
 
 
-
-
-        <button type="button" class="button" data-toggle="offCanvas">Open Menu</button>
-
-        <div class="off-canvas-content" data-off-canvas-content>
-            das ist der content
-
-
-        </div>
-    </div>
 </div>
-
-
 
 
 <?php renderPartial('footer'); ?>

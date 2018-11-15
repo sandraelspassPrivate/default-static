@@ -1,0 +1,17 @@
+// CSS Typografie
+
+// links
+a {
+  color: $primary-color;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: $primary-color;
+  }
+}
+
+// paragraphs
+p {
+  font-family: $second-font-family;
+}

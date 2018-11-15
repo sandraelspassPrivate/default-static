@@ -305,9 +305,17 @@ module.exports = function(grunt) {
             images: {
                 files: [{
                     expand: true,
-                    cwd: 'src/img/fonts',
+                    cwd: 'src/img/assets',
                     src: ['**'],
-                    dest: 'dist/img/fonts'
+                    dest: 'dist/img/assets'
+                }]
+            },
+            imagesDummy: {
+                files: [{
+                    expand: true,
+                    cwd: 'src/img/dummys',
+                    src: ['**'],
+                    dest: 'dist/img/dummys'
                 }]
             }
         }
@@ -328,7 +336,7 @@ module.exports = function(grunt) {
     grunt.registerTask('js-conf', [ 'concat:conf' ]);
     grunt.registerTask('js-lib', [ 'concat:lib', 'babel', 'uglify:lib' ]);
     grunt.registerTask('js-custom', [ 'eslint', 'concat:custom', 'uglify:custom' ]);
-    grunt.registerTask('copy-files', [ 'copy:fonts', 'copy:images']);
+    grunt.registerTask('copy-files', [ 'copy:fonts', 'copy:images', 'copy:imagesDummy']);
     grunt.registerTask('css', [ 'stylelint', 'sass', 'postcss' ]);
     grunt.registerTask('build', [ 'svg', 'css', 'js-conf', 'js-lib', 'js-custom', 'copy-files' ]);
 
