@@ -1,6 +1,6 @@
 <div class="off-canvas-wrapper">
     <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper>
-        <div class="off-canvas position-right" id="offCanvas" data-off-canvas data-position="right">
+        <div class="off-canvas position-right off-canvas-mobile" id="offCanvas" data-off-canvas data-position="right">
             <div class="hide-for-large">
                 <?php renderPartial('nav-mob'); ?>
             </div>

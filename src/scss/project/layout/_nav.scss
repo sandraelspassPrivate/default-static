@@ -1,3 +1,7 @@
+.off-canvas-mobile {
+  height: 100vh;
+}
+
 .dropdown {
   &.menu {
     a {
@@ -21,10 +25,12 @@
         background: $white;
         transition: $defaultTransition;
         font-family: $patua-font;
+        height: 69px;
+        border-bottom: 10px solid transparent;
 
         &:hover {
-          background: $primary-color;
           color: $black;
+          border-bottom: 3px solid $primary-color;
         }
       }
 
@@ -39,13 +45,15 @@
 
           &:after {
             right: rem-calc(17);
+            border-color: $primary-color transparent transparent;
+            margin-top: rem-calc(-10);
           }
         }
       }
 
       &.is-active {
         > a {
-          background: $primary-color;
+          border-bottom: 3px solid $primary-color;
           color: $black;
         }
       }
@@ -53,6 +61,7 @@
   }
 }
 // Mobile Navigation
+
 .mobNav {
   .svg {
     height: 35px;
