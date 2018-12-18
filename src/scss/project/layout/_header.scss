@@ -24,7 +24,7 @@
       .title-bar-left {
         .logo {
           .svg {
-            width: rem-calc(105);
+            width: rem-calc(110);
             height: rem-calc(50);
           }
         }
@@ -46,7 +46,7 @@
       .logo {
         .svg {
           transition: $defaultTransition;
-          width: rem-calc(170);
+          width: rem-calc(110);
           height: rem-calc(50);
           fill: $primary-color;
         }

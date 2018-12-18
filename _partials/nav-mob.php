@@ -1,6 +1,6 @@
-<div class="mobileNav">
+<div class="mobileNav" data-mobilenav>
     <!-- Close button -->
-    <button class="close-button" aria-label="Close menu" type="button" data-close>
+    <button class="close-button" aria-label="Close menu" type="button">
         <span aria-hidden="true">
             <svg class="svg">
                 <use xlink:href="#icon-esel"></use>
