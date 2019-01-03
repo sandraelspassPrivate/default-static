@@ -63,21 +63,19 @@
 
 // Mobile Navigation
 .mobNav {
-  .svg {
-    height: 35px;
-    width: 35px;
-  }
-}
+  cursor: pointer;
 
-.close-button {
   .svg {
-    height: rem-calc(35);
-    width: rem-calc(35);
+    color: $black;
+    fill: $black;
+    height: 25px;
+    width: 25px;
   }
 }
 
 .mobileNav {
-  padding-top: rem-calc(25);
+  transition: $defalt-transition;
+  position: relative;
 
   > ul {
     > li {
@@ -106,5 +104,10 @@
         }
       }
     }
+  }
+
+  &.open {
+    padding-top: rem-calc(25);
+    margin-top: 0 !important;
   }
 }

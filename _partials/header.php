@@ -28,7 +28,7 @@
                             <?php renderPartial('nav-desk'); ?>
                         </div>
 
-                        <div class="mobNav hide-for-large" data-toggle="offCanvas">
+                        <div class="mobNav hide-for-large">
                             <svg class="svg">
                                 <use xlink:href="#icon-esel"></use>
                             </svg>

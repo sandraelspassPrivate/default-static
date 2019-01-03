@@ -44,16 +44,24 @@
         $('.title-bar').on('sticky.zf.stuckto:top', function(){
             $(this).addClass('shrink');
         })
-.on('sticky.zf.unstuckfrom:top', function(){
-    $(this).removeClass('shrink');
-});
+        .on('sticky.zf.unstuckfrom:top', function(){
+            $(this).removeClass('shrink');
+        });
 
         /* **************************************
          ***************** NAVI *****************
          ***************************************/
 
 
+        var mobileNav = $('.mobileNav');
+        var mobileNavHeight = mobileNav.height();
+        var mobNavButton = $('.mobNav');
 
+        mobileNav.css('margin-top', - mobileNavHeight);
+
+        mobNavButton.on('click', function() {
+            mobileNav.toggleClass('open');
+        });
 
         /* **************************************
          *************** PLUGINS ****************

@@ -1,9 +1,9 @@
 <div class="mobileNav" data-mobilenav>
     <!-- Close button -->
-    <button class="close-button" aria-label="Close menu" type="button">
+    <button class="close-button mobNav" aria-label="Close menu" type="button">
         <span aria-hidden="true">
             <svg class="svg">
-                <use xlink:href="#icon-esel"></use>
+                <use xlink:href="#icon-cross"></use>
             </svg>
         </span>
     </button>
